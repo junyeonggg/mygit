@@ -21,6 +21,18 @@ public class BookDto {
 		this.price = price;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public LocalDate getPublishedDate() {
+		return publishedDate;
+	}
+	public int getPrice() {
+		return price;
+	}
 	@Override
 	public String toString() {
 		return "BookDto("+"title:"+title+ ",author:"+author+",publishedDate:"+publishedDate.toString()+

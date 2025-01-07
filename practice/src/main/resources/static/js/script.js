@@ -1,48 +1,54 @@
-function sendForm(requestType) {
-	const url = "/bookC/"
+function sendRequest(url, method, body = null) { //통합 한 이름을 sendRequest라 하겠다
+	//headers 정의
+	const headers = {
+		"Content-Type": "application/json"
+	}
+
+	//method,header,body가 들어갈 opstions 정의
+	const options = {
+		method: method,
+		headers: headers
+	}
+	// 만약 post,patch와 같이 body가 있으면 options에 추가
+	if (body) {
+		options.body = JSON.stringify(body);
+	}
+
+	return fetch(url, options)
+		.then(response => {
+			return response.json();
+		})
+		.then(data => console.log(data))
+}
+
+
+// 래퍼 함수들 
+function postRequest(url, body) {
+	return sendRequest(url, "POST", body);
+}
+function getRequest(url) {
+	return sendRequest(url, "GET");
+}
+function patchRequest(url, body) {
+	return sendRequest(url, "PATCH", body);
+}
+function deleteRequest(url) {
+	return sendRequest(url, "DELETE");
+}
+
+
+document.getElementById("postRequest").addEventListener("click", () => {
 	const title = document.querySelector("#title").value
 	const author = document.querySelector("#author").value
 	const publishedDate = document.querySelector("#publishedDate").value
 	const price = document.querySelector("#price").value
-	console.log("requestType: ", requestType)
-	const data = {
+
+	const body = {
 		title: title,
 		author: author,
 		publishedDate: publishedDate,
 		price: price
 	}
-	console.log(data)
-	if (requestType == "jquery") {
-		$.ajax({
-			url: url + requestType,
-			type: "post",
-			contentType: "application/json",
-			data: JSON.stringify(data),
-			success: data => console.log("jquery요청 성공")
-		})
-	} else if (requestType == "fetch") {
-		fetch(url + requestType, {
-			method: "post",
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(data)
-		}
-
-		)
-			.then((data) => {
-				console.log("fetch요청 성공");
-			})
-
-	} else if (requestType == "axios") {
-		axios({
-			url: url + requestType,
-			method: "post",
-			headers: {},
-			data: data
-		})
-			.then(data => console.log("axios요청 성공"))
-	}
-}
-
-/* JQuery 요청*/
-/* Fetch 요청*/
-/* Axios 요청*/
+	postRequest("/books",body)
+		
+})

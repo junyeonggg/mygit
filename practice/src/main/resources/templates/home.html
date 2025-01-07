@@ -2,45 +2,35 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<script th:src="@{js/script.js}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <title>홈</title>
 </head>
 <body>
 	<h1>도서관리 시스템</h1>
-	<form action="bookCForm" method="post">
-		<table>
-			<tr>
-				<th>책 제목</th>
-				<td><input type="text" name="title" id="title" value="책이름"></td>
-			</tr>
-			<tr>
-				<th>저자 이름</th>
-				<td><input type="text" name="author" id="author" value="준영"></td>
-			</tr>
-			<tr>
-				<th>출판일</th>
-				<td><input type="date" name="publishedDate" id="publishedDate" value="2024-01-01"></td>
-			</tr>
-			<tr>
-				<th>가격</th>
-				<td><input type="number" name="price" id="price" value="1100"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Form(동기)"></td>
-			</tr>
-			<tr>
-				<td><input type="button" onclick="sendForm('jquery')" value="jquery(비동기)"></td>
-			</tr>
-			<tr>
-				<td><input type="button" onclick="sendForm('fetch')" value="fetch(비동기)"></td>
-			</tr>
-			<tr>
-				<td><input type="button" onclick="sendForm('axios')" value="axios(비동기)"></td>
-			</tr>
-		</table>
-	</form>
+	<table>
+		<tr>
+			<th>책 제목</th>
+			<td><input type="text" name="title" id="title" value="책이름"></td>
+		</tr>
+		<tr>
+			<th>저자 이름</th>
+			<td><input type="text" name="author" id="author" value="준영"></td>
+		</tr>
+		<tr>
+			<th>출판일</th>
+			<td><input type="date" name="publishedDate" id="publishedDate"
+				value="2024-01-01"></td>
+		</tr>
+		<tr>
+			<th>가격</th>
+			<td><input type="number" name="price" id="price" value="1100"></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="postRequest" value="등록하기"></td>
+		</tr>
 
+	</table>
+	<script th:src="@{js/script.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
