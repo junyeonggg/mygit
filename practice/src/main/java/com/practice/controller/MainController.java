@@ -40,8 +40,6 @@ public class MainController {
 //	}
 
 	
-	
-	
 
 //	//통합
 //	@ResponseBody

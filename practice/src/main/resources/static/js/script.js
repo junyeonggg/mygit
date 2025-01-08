@@ -13,12 +13,7 @@ function sendRequest(url, method, body = null) { //통합 한 이름을 sendRequ
 	if (body) {
 		options.body = JSON.stringify(body);
 	}
-
 	return fetch(url, options)
-		.then(response => {
-			return response.json();
-		})
-		.then(data => console.log(data))
 }
 
 
@@ -50,5 +45,12 @@ document.getElementById("postRequest").addEventListener("click", () => {
 		price: price
 	}
 	postRequest("/books",body)
+	.then(response => {
+		console.log("URI 주소 : "+response.headers.get("Location"))
+		return response.json();
+	})
+	.then(data => console.log(data))
+	.catch(err => console.log("err : "+err));
+		
 		
 })
