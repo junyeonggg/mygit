@@ -2,9 +2,12 @@ package com.practice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
 @AllArgsConstructor
-public class ErrorDto {
+@Getter
+@Setter
+public class ValidationErrorDto {
+	private String field;
 	private String message;
 }
