@@ -45,29 +45,17 @@ public class MainRestController {
 
 	// U
 	@PatchMapping("/{id}")
-	public ResponseEntity<BookDto> patchBooks(@PathVariable("id") int id,@RequestBody BookDto reqeustBook) {
+	public ResponseEntity<BookDto> patchBooks(@PathVariable("id") int id, @RequestBody BookDto reqeustBook) {
 		System.out.println("Patch 요청");
 		BookDto updated = bookService.update(id, reqeustBook);
 		return ResponseEntity.ok(updated);
-
-//		try {
-//			BookDto book = bookService.update(reqeustBook);
-//			return ResponseEntity.ok(book);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return ResponseEntity.badRequest().build();
-//		}
 	}
 
 	// D
 	@DeleteMapping("/{id}")
 	public ResponseEntity<BookDto> deleteBooks(@PathVariable("id") int id) {
-		try {
-			bookService.delete(id);
-			return ResponseEntity.ok().build();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.badRequest().build();
-		}
+		bookService.delete(id);
+		return ResponseEntity.ok().build();
 	}
+
 }

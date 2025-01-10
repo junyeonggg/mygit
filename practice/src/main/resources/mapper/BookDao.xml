@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper namespace="mapper.BookDao">
-	<!-- 동적 update 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.dao.BookDao">
 	<update id="update" parameterType="com.practice.dto.BookDto">
 		UPDATE booktbl
 		<set>
-			<if test="title != null">title = #{title},</if>
-			<if test="author != null">author = #{author},</if>
-			<if test="publishedDate != null">publishedDate = #{publishedDate},</if>
-			<if test="price != null">price = #{price},</if>
+			<if test="requestBook.title != null">title = #{requestBook.title},</if>
+			<if test="requestBook.author != null">author = #{requestBook.author},</if>
+			<if test="requestBook.publishedDate != null">publishedDate = #{requestBook.publishedDate},</if>
+			<if test="requestBook.price != null">price = #{requestBook.price},</if>
 		</set>
-		WHERE id = #{id}
+		WHERE
+		id = #{id}
 	</update>
 </mapper>

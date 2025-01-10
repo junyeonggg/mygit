@@ -3,10 +3,10 @@ package com.practice.dto;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 @ToString
@@ -23,8 +23,10 @@ public class BookDto {
 	private String author;
 	
 	@PastOrPresent
+	@NotNull
 	private LocalDate publishedDate;
 	
-	private int price;
+	@Positive
+	private Integer price;
 
 }

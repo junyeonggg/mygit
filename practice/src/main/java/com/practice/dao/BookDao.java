@@ -2,6 +2,7 @@ package com.practice.dao;
 
 import java.util.Optional;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -22,4 +23,6 @@ public interface BookDao {
 
 	void update(@Param("id") int id, @Param("requestBook") BookDto requestBook);
 
+	@Delete("DELETE FROM booktbl WHERE id = #{id}")
+	void delete(int id);
 }

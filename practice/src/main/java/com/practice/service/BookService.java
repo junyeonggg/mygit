@@ -11,7 +11,7 @@ import com.practice.exception.BookNotFoundException;
 public class BookService {
 	@Autowired
 	private BookDao bookDao;
-
+	
 	// 저장
 	public BookDto save(BookDto book) {
 		bookDao.save(book);
@@ -26,13 +26,15 @@ public class BookService {
 	// 업데이트
 	public BookDto update(int id, BookDto reqeustBook) {
 		bookDao.findById(id).orElseThrow(() -> new BookNotFoundException("Book Not Found -> id : " + id)); // 코드 중복 나중에
+		System.out.println(reqeustBook.toString());
 		bookDao.update(id, reqeustBook);
 		return findById(id);
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		// id에 해당하는 book이 존재하는지 여부 확인
+		bookDao.findById(id).orElseThrow(()-> new BookNotFoundException("Book Not Found -> id : " + id));
+		bookDao.delete(id);
 	}
 
 }
