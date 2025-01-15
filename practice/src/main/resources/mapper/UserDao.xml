@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.dao.UserDao">
+	<insert id="create">
+	INSERT
+	INTO
+	user_tbl(email,password,nickname)
+	VALUES(#{email},#{password},#{nickname})
+	</insert>
+	
+	<select id="checkUser">
+	SELECT *
+	FROM
+	user_tbl
+	where 
+	email = #{email}
+	AND
+	password = #{password}
+	</select>
+	
+	
+</mapper>
