@@ -26,7 +26,6 @@ public class BookService {
 	// 업데이트
 	public BookDto update(int id, BookDto reqeustBook) {
 		bookDao.findById(id).orElseThrow(() -> new BookNotFoundException("Book Not Found -> id : " + id)); // 코드 중복 나중에
-		System.out.println(reqeustBook.toString());
 		bookDao.update(id, reqeustBook);
 		return findById(id);
 	}
